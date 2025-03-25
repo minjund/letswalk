@@ -5,6 +5,10 @@ public record Title(String title) {
         if (title == null || title.isBlank()) {
             throw new IllegalArgumentException("Title cannot be null or blank");
         }
+
+        if (title.length() > 20){
+            throw new RuntimeException("20자 이상 제목을 입력할 수 없습니다.");
+        }
     }
 
     public static Title of(String value) {

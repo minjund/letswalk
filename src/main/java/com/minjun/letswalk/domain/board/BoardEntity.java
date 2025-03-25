@@ -33,7 +33,7 @@ public class BoardEntity extends BaseEntity {
     private Integer boardRecruitPersonnel;
 
 
-    public static BoardEntity save(BoardSaveCommend boardSaveCommend) {
+    public static BoardEntity of(BoardSaveCommend boardSaveCommend) {
         BoardEntity boardEntity = new BoardEntity();
 
         boardEntity.title = boardSaveCommend.title().valueOf();

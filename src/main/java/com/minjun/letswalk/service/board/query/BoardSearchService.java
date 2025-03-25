@@ -1,8 +1,8 @@
 package com.minjun.letswalk.service.board.query;
 
 import com.minjun.letswalk.domain.board.BoardEntity;
+import com.minjun.letswalk.domain.board.BoardQueryRepository;
 import com.minjun.letswalk.domain.board.BoardRecruitGenderType;
-import com.minjun.letswalk.domain.board.dao.BoardFindDao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +12,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BoardSearchService {
 
-    private final BoardFindDao boardFindDao;
+    private final BoardQueryRepository boardQueryRepository;
 
     public List<BoardEntity> find() {
-        return boardFindDao.findByBoardRecruitGenderType(BoardRecruitGenderType.EVERY);
+        return boardQueryRepository.findByBoardRecruitGenderType(BoardRecruitGenderType.EVERY);
     }
 }

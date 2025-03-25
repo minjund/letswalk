@@ -8,19 +8,17 @@ import com.minjun.letswalk.service.board.BoardService;
 import com.minjun.letswalk.service.board.query.BoardSearchService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api")
 public class BoardController {
-
-    private final BoardSearchService boardSearchService;
     private final BoardService boardService;
+    private final BoardSearchService boardSearchService;
 
     @GetMapping("/v1/board")
     public ResponseEntity<List<BoardEntity>> findBoard(){
@@ -31,7 +29,7 @@ public class BoardController {
 
     @PostMapping("/v1/board")
     public ResponseEntity<?> saveBoard(@RequestBody BoardRequest boardRequest){
-        BoardSaveCommend boardSaveCommend = BoardSaveCommend.of(boardRequest);
+        BoardSaveCommend boardSaveCommend = BoardSaveCommend.from(boardRequest);
 
         BoardSaveResult boardSeq = boardService.save(boardSaveCommend);
 

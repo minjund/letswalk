@@ -13,8 +13,7 @@ public record BoardSaveCommend(Title title,
                                BoardRecruitGenderType boardRecruitGenderType,
                                BoardRecruitPersonnel boardRecruitPersonnel
 ) {
-
-    public static BoardSaveCommend of(BoardRequest boardRequest) {
+    public static BoardSaveCommend from(BoardRequest boardRequest) {
         return BoardSaveCommend.builder()
                 .title(Title.of(boardRequest.title()))
                 .content(Content.of(boardRequest.content()))
