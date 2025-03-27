@@ -20,8 +20,8 @@ public class BoardController {
     private final BoardService boardService;
     private final BoardSearchService boardSearchService;
 
-    @GetMapping("/v1/board")
-    public ResponseEntity<List<BoardEntity>> findBoard(){
+    @GetMapping("/v1/board/{seq}")
+    public ResponseEntity<List<BoardEntity>> findBoard(@PathVariable Integer seq){
         List<BoardEntity> boardEntities = boardSearchService.find();
 
         return ResponseEntity.ok(boardEntities);
@@ -34,6 +34,12 @@ public class BoardController {
         BoardSaveResult boardSeq = boardService.save(boardSaveCommend);
 
         return ResponseEntity.ok(boardSeq);
+    }
+
+    @PostMapping("/v1/board/{seq}")
+    public ResponseEntity<?> modifyBoard(@PathVariable Integer seq){
+
+        return ResponseEntity.ok();
     }
 
 }
