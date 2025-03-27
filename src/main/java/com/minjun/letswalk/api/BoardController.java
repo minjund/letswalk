@@ -39,7 +39,7 @@ public class BoardController {
     @PostMapping("/v1/board/{seq}")
     public ResponseEntity<?> modifyBoard(@PathVariable Integer seq){
 
-        return ResponseEntity.ok();
+        return ResponseEntity.ok("");
     }
 
 }
