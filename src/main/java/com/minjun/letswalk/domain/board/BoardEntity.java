@@ -17,10 +17,10 @@ public class BoardEntity extends BaseEntity {
     @Column(name = "seq")
     private Long boardSeq;
 
-    @Column(name = "value")
+    @Column(name = "title")
     private String title;
 
-    @Column(name = "value", columnDefinition = "MEDIUMTEXT")
+    @Column(name = "content", columnDefinition = "MEDIUMTEXT")
     private String content;
 
     @Column(name = "recruit_gender_type")

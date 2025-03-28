@@ -17,7 +17,7 @@ public class BoardSearchService {
     private final BoardQueryRepository boardQueryRepository;
 
     public List<BoardQueryResponse> find() {
-        List<BoardEntity> boardEntityList = boardQueryRepository.findByBoardRecruitGenderTypeIn(BoardRecruitGenderType.forDisplay());
+        List<BoardEntity> boardEntityList = boardQueryRepository.findAllByRecruitGenderTypeIn(BoardRecruitGenderType.forDisplay());
 
         return boardEntityList.stream()
                 .map(BoardQueryResponse::of)
