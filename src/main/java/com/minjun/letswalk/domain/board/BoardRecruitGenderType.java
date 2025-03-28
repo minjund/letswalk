@@ -4,6 +4,8 @@ import com.minjun.letswalk.domain.converter.AbstractCodedEnumConverter;
 import com.minjun.letswalk.domain.converter.CodedEnum;
 import lombok.Getter;
 
+import java.util.List;
+
 @Getter
 public enum BoardRecruitGenderType implements CodedEnum<String> {
     FEMALE("female"),
@@ -16,8 +18,8 @@ public enum BoardRecruitGenderType implements CodedEnum<String> {
         this.code = code;
     }
 
-    public static BoardRecruitGenderType of(String s) {
-        return findByCode(s);
+    public static List<BoardRecruitGenderType> forDisplay() {
+        return List.of(FEMALE,MALE, EVERY);
     }
 
     @jakarta.persistence.Converter(autoApply = true)

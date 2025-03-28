@@ -1,7 +1,6 @@
 package com.minjun.letswalk.service.board;
 
-import com.minjun.letswalk.domain.board.BoardEntity;
-import com.minjun.letswalk.domain.board.BoardAppender;
+import com.minjun.letswalk.domain.board.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,12 +9,20 @@ import org.springframework.stereotype.Service;
 public class BoardService {
     private final BoardAppender boardAppender;
 
-    public BoardSaveResult save(BoardSaveCommend boardSaveCommend) {
-        BoardEntity boardEntity = BoardEntity.of(boardSaveCommend);
+    public Long save(BoardSaveCommend boardSaveCommend) {
+        BoardTitle boardTitle = BoardTitle.of(boardSaveCommend.title());
+        BoardContent boardContent = BoardContent.of(boardSaveCommend.content());
+        BoardRecruitGenderType boardRecruitGenderType = boardSaveCommend.boardRecruitGenderType();
+        Integer boardRecruitPersonnel = boardSaveCommend.boardRecruitPersonnel();
 
-        Long boardSeq = boardAppender.append(boardEntity);
+        BoardEntity boardEntity = BoardEntity.of(
+                boardTitle,
+                boardContent,
+                boardRecruitGenderType,
+                boardRecruitPersonnel
+        );
 
-        return BoardSaveResult.of(boardSeq);
+        return boardAppender.append(boardEntity);
     }
 
 }

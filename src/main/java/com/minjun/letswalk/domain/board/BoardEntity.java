@@ -1,7 +1,6 @@
 package com.minjun.letswalk.domain.board;
 
 import com.minjun.letswalk.global.entity.BaseEntity;
-import com.minjun.letswalk.service.board.BoardSaveCommend;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -18,28 +17,31 @@ public class BoardEntity extends BaseEntity {
     @Column(name = "seq")
     private Long boardSeq;
 
-    @Column(name = "title")
+    @Column(name = "value")
     private String title;
 
-    @Column(name = "content", columnDefinition = "MEDIUMTEXT")
+    @Column(name = "value", columnDefinition = "MEDIUMTEXT")
     private String content;
 
     @Column(name = "recruit_gender_type")
     @Comment("모집 성별")
-    private BoardRecruitGenderType boardRecruitGenderType;
+    private BoardRecruitGenderType recruitGenderType;
 
     @Column(name = "recruit_personnel")
     @Comment("모집 인원")
-    private Integer boardRecruitPersonnel;
+    private Integer recruitPersonnel;
 
-
-    public static BoardEntity of(BoardSaveCommend boardSaveCommend) {
+    public static BoardEntity of(BoardTitle boardTitle,
+                                 BoardContent boardContent,
+                                 BoardRecruitGenderType boardRecruitGenderType,
+                                 Integer boardRecruitPersonnel
+    ) {
         BoardEntity boardEntity = new BoardEntity();
 
-        boardEntity.title = boardSaveCommend.title().valueOf();
-        boardEntity.content = boardSaveCommend.content().valueOf();
-        boardEntity.boardRecruitGenderType = boardSaveCommend.boardRecruitGenderType();
-        boardEntity.boardRecruitPersonnel = boardSaveCommend.boardRecruitPersonnel().valueOf();
+        boardEntity.title = boardTitle.value();
+        boardEntity.content = boardContent.value();
+        boardEntity.recruitGenderType = boardRecruitGenderType;
+        boardEntity.recruitPersonnel = boardRecruitPersonnel;
 
         return boardEntity;
     }

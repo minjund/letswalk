@@ -1,9 +1,7 @@
 package com.minjun.letswalk.api;
 
-import com.minjun.letswalk.api.dto.BoardRequest;
-import com.minjun.letswalk.domain.board.BoardEntity;
-import com.minjun.letswalk.service.board.BoardSaveCommend;
-import com.minjun.letswalk.service.board.BoardSaveResult;
+import com.minjun.letswalk.api.dto.BoardQueryResponse;
+import com.minjun.letswalk.api.dto.BoardSaveRequest;
 import com.minjun.letswalk.service.board.BoardService;
 import com.minjun.letswalk.service.board.query.BoardSearchService;
 import lombok.RequiredArgsConstructor;
@@ -21,22 +19,20 @@ public class BoardController {
     private final BoardSearchService boardSearchService;
 
     @GetMapping("/v1/board/{seq}")
-    public ResponseEntity<List<BoardEntity>> findBoard(@PathVariable Integer seq){
-        List<BoardEntity> boardEntities = boardSearchService.find();
+    public ResponseEntity<List<BoardQueryResponse>> findBoard(@PathVariable Integer seq){
+        List<BoardQueryResponse> boardQueryResponses = boardSearchService.find();
 
-        return ResponseEntity.ok(boardEntities);
+        return ResponseEntity.ok(boardQueryResponses);
     }
 
     @PostMapping("/v1/board")
-    public ResponseEntity<?> saveBoard(@RequestBody BoardRequest boardRequest){
-        BoardSaveCommend boardSaveCommend = BoardSaveCommend.from(boardRequest);
+    public ResponseEntity<Long> saveBoard(@RequestBody BoardSaveRequest boardSaveRequest){
+        Long boardSaveSeq = boardService.save(boardSaveRequest.toCommend());
 
-        BoardSaveResult boardSeq = boardService.save(boardSaveCommend);
-
-        return ResponseEntity.ok(boardSeq);
+        return ResponseEntity.ok(boardSaveSeq);
     }
 
-    @PostMapping("/v1/board/{seq}")
+    @PutMapping("/v1/board/{seq}")
     public ResponseEntity<?> modifyBoard(@PathVariable Integer seq){
 
         return ResponseEntity.ok("");

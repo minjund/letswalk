@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface BoardFindJpaDao extends BoardQueryRepository, JpaRepository<BoardEntity, Long> {
 
-    List<BoardEntity> findByBoardRecruitGenderType(BoardRecruitGenderType boardRecruitGenderType);
+    List<BoardEntity> findAllByRecruitGenderTypeIn(List<BoardRecruitGenderType> boardRecruitGenderTypes);
 }

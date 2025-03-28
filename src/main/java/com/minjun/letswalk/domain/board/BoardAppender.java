@@ -10,7 +10,6 @@ public class BoardAppender {
 
     public Long append(BoardEntity boardEntity){
         BoardEntity save = boardRepository.save(boardEntity);
-
         return save.getBoardSeq();
     }
 }
