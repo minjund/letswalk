@@ -15,7 +15,10 @@ public class BoardEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "seq")
-    private Long boardSeq;
+    private Long seq;
+
+    @Column(name = "id")
+    private String id;
 
     @Column(name = "title")
     private String title;

@@ -1,0 +1,10 @@
+## 신규 게시판 생성
+POST localhost:8084/api/v1/board
+Content-Type: application/json
+
+{
+  "title": "산책 갈 사람~",
+  "content": "점심 시간 급구",
+  "boardRecruitGenderType": "male",
+  "boardRecruitPersonnel": 3
+}

@@ -1,7 +1,7 @@
 package com.minjun.letswalk.api;
 
 import com.minjun.letswalk.api.dto.BoardQueryResponse;
-import com.minjun.letswalk.api.dto.BoardSaveRequest;
+import com.minjun.letswalk.api.dto.BoardAppendRequest;
 import com.minjun.letswalk.service.board.BoardService;
 import com.minjun.letswalk.service.board.query.BoardSearchService;
 import lombok.RequiredArgsConstructor;
@@ -26,8 +26,8 @@ public class BoardController {
     }
 
     @PostMapping("/v1/board")
-    public ResponseEntity<Long> saveBoard(@RequestBody BoardSaveRequest boardSaveRequest){
-        Long boardSaveSeq = boardService.save(boardSaveRequest.toCommend());
+    public ResponseEntity<Long> saveBoard(@RequestBody BoardAppendRequest boardAppendRequest){
+        Long boardSaveSeq = boardService.save(boardAppendRequest.toCommend());
 
         return ResponseEntity.ok(boardSaveSeq);
     }
