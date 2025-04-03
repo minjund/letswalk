@@ -16,11 +16,11 @@ public class BoardSearchService {
 
     private final BoardQueryDao boardQueryDao;
 
-    public List<BoardQueryResponse> find() {
+    public List<BoardQueryResponse> findAllRecruitGenderTypeByBoard() {
         List<BoardEntity> boardEntityList = boardQueryDao.findAllByRecruitGenderTypeIn(BoardRecruitGenderType.forDisplay());
 
         return boardEntityList.stream()
                 .map(BoardQueryResponse::of)
-                .collect(Collectors.toList());
+                .toList();
     }
 }

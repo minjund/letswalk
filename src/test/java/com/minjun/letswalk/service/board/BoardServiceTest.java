@@ -21,7 +21,7 @@ class BoardServiceTest {
 
     @DisplayName("게시판 정보를 받아 게시판을 생성한다.")
     @Test
-    void booardCreate(){
+    void boardCreate(){
         // given
         BoardAppendRequest boardAppendRequest = new BoardAppendRequest(
                 "ㅇㅇ",
@@ -31,7 +31,7 @@ class BoardServiceTest {
         );
 
         // when
-        Long saveSeq = boardService.save(boardAppendRequest.toCommend());
+        Long saveSeq = boardService.save(boardAppendRequest.toCommand());
 
         // then
         assertThat(saveSeq).isNotNull().isEqualTo(1L);

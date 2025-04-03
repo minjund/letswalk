@@ -3,7 +3,7 @@ package com.minjun.letswalk.domain.board;
 import lombok.Builder;
 
 @Builder
-public record BoardSaveCommend(String title,
+public record BoardSaveCommand(String title,
                                String content,
                                BoardRecruitGenderType boardRecruitGenderType,
                                Integer boardRecruitPersonnel

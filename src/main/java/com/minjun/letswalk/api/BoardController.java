@@ -20,14 +20,14 @@ public class BoardController {
 
     @GetMapping("/v1/board/{seq}")
     public ResponseEntity<List<BoardQueryResponse>> findBoard(@PathVariable Integer seq){
-        List<BoardQueryResponse> boardQueryResponses = boardSearchService.find();
+        List<BoardQueryResponse> boardQueryResponses = boardSearchService.findAllRecruitGenderTypeByBoard();
 
         return ResponseEntity.ok(boardQueryResponses);
     }
 
     @PostMapping("/v1/board")
     public ResponseEntity<Long> saveBoard(@RequestBody BoardAppendRequest boardAppendRequest){
-        Long boardSaveSeq = boardService.save(boardAppendRequest.toCommend());
+        Long boardSaveSeq = boardService.save(boardAppendRequest.toCommand());
 
         return ResponseEntity.ok(boardSaveSeq);
     }
