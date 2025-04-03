@@ -27,7 +27,7 @@ public class BoardController {
 
     @PostMapping("/v1/board")
     public ResponseEntity<Long> saveBoard(@RequestBody BoardAppendRequest boardAppendRequest){
-        Long boardSaveSeq = boardService.save(boardAppendRequest.toCommand());
+        Long boardSaveSeq = boardService.boardSave(boardAppendRequest.toCommand());
 
         return ResponseEntity.ok(boardSaveSeq);
     }

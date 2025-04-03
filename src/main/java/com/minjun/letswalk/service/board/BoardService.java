@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class BoardService {
     private final BoardAppender boardAppender;
 
-    public Long save(BoardSaveCommand boardSaveCommand) {
+    public Long boardSave(BoardSaveCommand boardSaveCommand) {
         Board board = Board.of(boardSaveCommand);
 
         BoardEntity boardEntity = BoardEntity.of(
