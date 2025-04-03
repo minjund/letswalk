@@ -1,8 +1,7 @@
 package com.minjun.letswalk.service.board;
 
 import com.minjun.letswalk.api.dto.BoardAppendRequest;
-import com.minjun.letswalk.domain.board.*;
-import com.minjun.letswalk.infra.dao.BoardJpaDao;
+import com.minjun.letswalk.infra.dao.BoardJpaRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,7 @@ class BoardServiceTest {
     private BoardService boardService;
 
     @Autowired
-    BoardJpaDao boardJpaDao;
+    BoardJpaRepository boardJpaRepository;
 
     @DisplayName("게시판 정보를 받아 게시판을 생성한다.")
     @Test

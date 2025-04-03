@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class BoardAppender {
-    private final BoardRepository boardRepository;
+    private final BoardDao boardDao;
 
     public Long append(BoardEntity boardEntity){
-        BoardEntity save = boardRepository.save(boardEntity);
+        BoardEntity save = boardDao.save(boardEntity);
         return save.getSeq();
     }
 }

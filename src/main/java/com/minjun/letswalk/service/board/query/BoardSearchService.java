@@ -2,7 +2,7 @@ package com.minjun.letswalk.service.board.query;
 
 import com.minjun.letswalk.api.dto.BoardQueryResponse;
 import com.minjun.letswalk.domain.board.BoardEntity;
-import com.minjun.letswalk.domain.board.BoardQueryRepository;
+import com.minjun.letswalk.domain.board.BoardQueryDao;
 import com.minjun.letswalk.domain.board.BoardRecruitGenderType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,10 +14,10 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class BoardSearchService {
 
-    private final BoardQueryRepository boardQueryRepository;
+    private final BoardQueryDao boardQueryDao;
 
     public List<BoardQueryResponse> find() {
-        List<BoardEntity> boardEntityList = boardQueryRepository.findAllByRecruitGenderTypeIn(BoardRecruitGenderType.forDisplay());
+        List<BoardEntity> boardEntityList = boardQueryDao.findAllByRecruitGenderTypeIn(BoardRecruitGenderType.forDisplay());
 
         return boardEntityList.stream()
                 .map(BoardQueryResponse::of)

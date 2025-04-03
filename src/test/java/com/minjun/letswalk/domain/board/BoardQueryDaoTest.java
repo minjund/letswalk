@@ -1,7 +1,7 @@
 package com.minjun.letswalk.domain.board;
 
-import com.minjun.letswalk.infra.dao.BoardFindJpaDao;
-import com.minjun.letswalk.infra.dao.BoardJpaDao;
+import com.minjun.letswalk.infra.dao.BoardFindJpaRepository;
+import com.minjun.letswalk.infra.dao.BoardJpaRepository;
 import org.assertj.core.groups.Tuple;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
@@ -14,17 +14,18 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-class BoardQueryRepositoryTest {
+class BoardQueryDaoTest {
 
     @Autowired
-    private BoardJpaDao boardJpaDao;
+    private BoardJpaRepository boardJpaRepository;
 
     @Autowired
-    private BoardFindJpaDao boardFindJpaDao;
+    private BoardFindJpaRepository boardFindJpaRepository;
 
     @AfterEach
     void tearDown() {
-        boardJpaDao.deleteAllInBatch();
+        boardJpaRepository.deleteAllInBatch();
+        boardFindJpaRepository.deleteAllInBatch();
     }
 
     @DisplayName("원하는 상태를 가진 게시판을 조회한다.")
@@ -51,10 +52,10 @@ class BoardQueryRepositoryTest {
                 BoardRecruitGenderType.EVERY,
                 3
         );
-        boardJpaDao.saveAll(List.of(boardEntity,boardEntity2,boardEntity3));
+        boardJpaRepository.saveAll(List.of(boardEntity,boardEntity2,boardEntity3));
 
         // when
-        List<BoardEntity> allByRecruitGenderTypeIn = boardFindJpaDao.findAllByRecruitGenderTypeIn(List.of(BoardRecruitGenderType.FEMALE));
+        List<BoardEntity> allByRecruitGenderTypeIn = boardFindJpaRepository.findAllByRecruitGenderTypeIn(List.of(BoardRecruitGenderType.FEMALE));
 
         // then
         assertThat(allByRecruitGenderTypeIn)
