@@ -42,8 +42,8 @@ class BoardControllerTest {
         BoardAppendRequest boardAppendRequest = BoardAppendRequest.builder()
                 .title("나랑 산책 갈 사람")
                 .content("나랑 산책 갈 남자만 구해요")
-                .boardRecruitPersonnel(2)
-                .boardRecruitGenderType("male")
+                .recruitPersonnel(2)
+                .recruitGenderType("male")
                 .build();
 
         // when //then
@@ -63,8 +63,8 @@ class BoardControllerTest {
         // given
         BoardAppendRequest boardAppendRequest = BoardAppendRequest.builder()
                 .content("아아")
-                .boardRecruitPersonnel(2)
-                .boardRecruitGenderType("male")
+                .recruitPersonnel(2)
+                .recruitGenderType("male")
                 .build();
 
         // when //then
@@ -89,8 +89,8 @@ class BoardControllerTest {
         // given
         BoardAppendRequest boardAppendRequest = BoardAppendRequest.builder()
                 .title("산책 갈 사람")
-                .boardRecruitPersonnel(2)
-                .boardRecruitGenderType("male")
+                .recruitPersonnel(2)
+                .recruitGenderType("male")
                 .build();
 
         // when //then
@@ -116,7 +116,7 @@ class BoardControllerTest {
         BoardAppendRequest boardAppendRequest = BoardAppendRequest.builder()
                 .title("짧산 ㄱㄱ")
                 .content("나랑 산책 갈 남자만 구해요")
-                .boardRecruitPersonnel(2)
+                .recruitPersonnel(2)
                 .build();
 
         // when //then
@@ -142,8 +142,8 @@ class BoardControllerTest {
         BoardAppendRequest boardAppendRequest = BoardAppendRequest.builder()
                 .title("산책 가실분")
                 .content("나랑 산책 갈 남자만 구해요")
-                .boardRecruitPersonnel(0)
-                .boardRecruitGenderType("male")
+                .recruitPersonnel(0)
+                .recruitGenderType("male")
                 .build();
 
         // when //then

@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDateTime;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -27,7 +29,10 @@ class BoardServiceTest {
                 "ㅇㅇ",
                 "점심 시간 짧게 ㄱㄱ",
                 "male",
-                3
+                3,
+                "every",
+                "삼성동",
+                LocalDateTime.now()
         );
 
         // when

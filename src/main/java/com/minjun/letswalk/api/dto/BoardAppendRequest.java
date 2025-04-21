@@ -6,6 +6,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import lombok.Builder;
 
+import java.time.LocalDateTime;
+
 @Builder
 public record BoardAppendRequest(
         @NotBlank(message = "제목 입력은 필수 입니다.")
@@ -13,16 +15,26 @@ public record BoardAppendRequest(
         @NotBlank(message = "내용 입력은 필수 입니다.")
         String content,
         @NotBlank(message = "성별 입력은 필수 입니다.")
-        String boardRecruitGenderType,
+        String recruitGenderType,
         @Positive(message = "인원 수는 양수여야 합니다.")
-        Integer boardRecruitPersonnel) {
+        Integer recruitPersonnel,
+        @NotBlank(message = "인원 입력은 필수 입니다.")
+        String recruitAge,
+        @NotBlank(message = "모집 주소는 필수 입니다.")
+        String recruitAddress,
+        @NotBlank(message = "모집 시간은 필수 입니다.")
+        LocalDateTime recruitLocalDateTime
+) {
 
     public BoardSaveCommand toCommand() {
         return new BoardSaveCommand(
                 title,
                 content,
-                BoardRecruitGenderType.findByCode(boardRecruitGenderType),
-                boardRecruitPersonnel
+                BoardRecruitGenderType.findByCode(recruitGenderType),
+                recruitPersonnel,
+                recruitAge,
+                recruitAddress,
+                recruitLocalDateTime
         );
     }
 }
