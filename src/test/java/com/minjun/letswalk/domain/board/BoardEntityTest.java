@@ -1,5 +1,6 @@
 package com.minjun.letswalk.domain.board;
 
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

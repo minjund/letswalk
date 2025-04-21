@@ -1,6 +1,7 @@
 package com.minjun.letswalk.infra.dao;
 
 import com.minjun.letswalk.domain.board.*;
+import jakarta.transaction.Transactional;
 import org.assertj.core.groups.Tuple;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,6 +14,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
+@Transactional
 class BoardFindJpaRepositoryTest {
 
     @Autowired

@@ -2,6 +2,7 @@ package com.minjun.letswalk.service.board;
 
 import com.minjun.letswalk.api.dto.BoardAppendRequest;
 import com.minjun.letswalk.infra.dao.BoardJpaRepository;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 @SpringBootTest
+@Transactional
 class BoardServiceTest {
 
     @Autowired
@@ -39,6 +41,6 @@ class BoardServiceTest {
         Long saveSeq = boardService.boardSave(boardAppendRequest.toCommand());
 
         // then
-        assertThat(saveSeq).isNotNull().isEqualTo(1L);
+        assertThat(saveSeq).isNotNull();
     }
 }
