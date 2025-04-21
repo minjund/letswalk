@@ -30,7 +30,7 @@ class BoardServiceTest {
                 "점심 시간 짧게 ㄱㄱ",
                 "male",
                 3,
-                "every",
+                "all",
                 "삼성동",
                 LocalDateTime.now()
         );

@@ -1,5 +1,6 @@
 package com.minjun.letswalk.api.dto;
 
+import com.minjun.letswalk.domain.board.BoardRecruitAgeType;
 import com.minjun.letswalk.domain.board.BoardRecruitGenderType;
 import com.minjun.letswalk.domain.board.BoardSaveCommand;
 import org.junit.jupiter.api.DisplayName;
@@ -21,7 +22,7 @@ class BoardAppendRequestTest {
                 "좋아 하는 사람?",
                 "male",
                 1,
-                "adolescents",
+                "adult",
                 "삼성동",
                 LocalDateTime.of(2025,4,21,10,47)
         );
@@ -35,7 +36,7 @@ class BoardAppendRequestTest {
         assertThat(command.boardRecruitGenderType()).isEqualTo(BoardRecruitGenderType.MALE);
         assertThat(command.boardRecruitPersonnel()).isEqualTo(1);
         assertThat(command.recruitAddress()).isEqualTo("삼성동");
-        assertThat(command.recruitAge()).isEqualTo("adolescents");
+        assertThat(command.recruitAge()).isEqualTo(BoardRecruitAgeType.ADULT);
         assertThat(command.recruitLocalDateTime()).isEqualTo(LocalDateTime.of(2025,4,21,10,47));
     }
 
@@ -48,7 +49,7 @@ class BoardAppendRequestTest {
                 "좋아 하는 사람?",
                 "male2233",
                 1,
-                "every",
+                "any",
                 "삼성동",
                 LocalDateTime.of(2025,4,21,10,47));
 

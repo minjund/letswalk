@@ -3,6 +3,8 @@ package com.minjun.letswalk.domain.board;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class BoardEntityTest {
@@ -14,10 +16,18 @@ class BoardEntityTest {
         BoardTitle boardTitle = BoardTitle.of("산책 갈 사람?");
         BoardContent boardContent = BoardContent.of("남자만..");
         BoardRecruitGenderType boardRecruitGenderType = BoardRecruitGenderType.MALE;
-        Integer boardRecruitPersonnel = 2;
+        BoardRecruitAgeType boardRecruitAgeType = BoardRecruitAgeType.ADULT;
 
         // when
-        BoardEntity boardEntity = BoardEntity.of(boardTitle, boardContent, boardRecruitGenderType, boardRecruitPersonnel);
+        BoardEntity boardEntity = BoardEntity.of(
+                boardTitle,
+                boardContent,
+                boardRecruitGenderType,
+                2,
+                boardRecruitAgeType,
+                "삼성동",
+                LocalDateTime.of(2025, 4, 21, 11, 13)
+        );
 
         // then
         assertThat(boardEntity.getTitle())
@@ -25,6 +35,10 @@ class BoardEntityTest {
 
         assertThat(boardEntity.getContent())
                 .isEqualTo("남자만..");
+
+        assertThat(boardEntity.getRecruitGenderType()).isEqualTo(BoardRecruitGenderType.MALE);
+        assertThat(boardEntity.getRecruitAgeType()).isEqualTo(BoardRecruitAgeType.ADULT);
+        assertThat(boardEntity.getRecruitAddress()).isEqualTo("삼성동");
     }
 
 }

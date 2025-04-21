@@ -2,6 +2,7 @@ package com.minjun.letswalk.domain.board;
 
 import com.minjun.letswalk.infra.dao.BoardFindJpaRepository;
 import com.minjun.letswalk.infra.dao.BoardJpaRepository;
+import jakarta.transaction.Transactional;
 import org.assertj.core.groups.Tuple;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
@@ -9,11 +10,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
+@Transactional
 class BoardQueryDaoTest {
 
     @Autowired
@@ -38,19 +41,28 @@ class BoardQueryDaoTest {
                 boardTitle,
                 content,
                 BoardRecruitGenderType.FEMALE,
-                3
+                3,
+                BoardRecruitAgeType.ADULT,
+                "삼성동",
+                LocalDateTime.now()
         );
         BoardEntity boardEntity2 = BoardEntity.of(
                 boardTitle,
                 content,
                 BoardRecruitGenderType.MALE,
-                3
+                3,
+                BoardRecruitAgeType.ADULT,
+                "삼성동",
+                LocalDateTime.now()
         );
         BoardEntity boardEntity3 = BoardEntity.of(
                 boardTitle,
                 content,
-                BoardRecruitGenderType.EVERY,
-                3
+                BoardRecruitGenderType.ANY,
+                3,
+                BoardRecruitAgeType.ADULT,
+                "삼성동",
+                LocalDateTime.now()
         );
         boardJpaRepository.saveAll(List.of(boardEntity,boardEntity2,boardEntity3));
 

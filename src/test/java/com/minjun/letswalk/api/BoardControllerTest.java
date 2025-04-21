@@ -14,6 +14,7 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.mockito.Mockito.when;
@@ -44,6 +45,9 @@ class BoardControllerTest {
                 .content("나랑 산책 갈 남자만 구해요")
                 .recruitPersonnel(2)
                 .recruitGenderType("male")
+                .recruitAge("all")
+                .recruitAddress("삼성동")
+                .recruitLocalDateTime(LocalDateTime.now())
                 .build();
 
         // when //then
@@ -65,6 +69,9 @@ class BoardControllerTest {
                 .content("아아")
                 .recruitPersonnel(2)
                 .recruitGenderType("male")
+                .recruitAge("every")
+                .recruitAddress("삼성동")
+                .recruitLocalDateTime(LocalDateTime.now())
                 .build();
 
         // when //then
@@ -91,6 +98,9 @@ class BoardControllerTest {
                 .title("산책 갈 사람")
                 .recruitPersonnel(2)
                 .recruitGenderType("male")
+                .recruitAge("every")
+                .recruitAddress("삼성동")
+                .recruitLocalDateTime(LocalDateTime.now())
                 .build();
 
         // when //then
@@ -117,6 +127,9 @@ class BoardControllerTest {
                 .title("짧산 ㄱㄱ")
                 .content("나랑 산책 갈 남자만 구해요")
                 .recruitPersonnel(2)
+                .recruitAge("every")
+                .recruitAddress("삼성동")
+                .recruitLocalDateTime(LocalDateTime.now())
                 .build();
 
         // when //then
@@ -144,6 +157,9 @@ class BoardControllerTest {
                 .content("나랑 산책 갈 남자만 구해요")
                 .recruitPersonnel(0)
                 .recruitGenderType("male")
+                .recruitAge("every")
+                .recruitAddress("삼성동")
+                .recruitLocalDateTime(LocalDateTime.now())
                 .build();
 
         // when //then
