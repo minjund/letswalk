@@ -10,13 +10,20 @@ public class BoardService {
     private final BoardAppender boardAppender;
 
     public Long boardSave(BoardSaveCommand boardSaveCommand) {
-        Board board = Board.of(boardSaveCommand);
+        BoardTitle boardTitle = BoardTitle.of(boardSaveCommand.title());
+        BoardContent boardContent = BoardContent.of(boardSaveCommand.content());
+        BoardRecruitGenderType boardRecruitGenderType = boardSaveCommand.boardRecruitGenderType();
+        BoardRecruitAgeType boardRecruitAgeType = boardSaveCommand.recruitAge();
 
         BoardEntity boardEntity = BoardEntity.of(
-                board.boardTitle(),
-                board.boardContent(),
-                board.boardRecruitGenderType(),
-                board.boardRecruitPersonnel()
+                boardTitle,
+                boardContent,
+                boardRecruitGenderType,
+                boardSaveCommand.boardRecruitPersonnel(),
+                boardRecruitAgeType,
+                boardSaveCommand.recruitAddress(),
+                boardSaveCommand.recruitLocalDateTime()
+
         );
 
         return boardAppender.append(boardEntity);

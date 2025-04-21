@@ -12,12 +12,12 @@ import java.util.List;
 public enum BoardRecruitGenderType implements CodedEnum<String> {
     FEMALE("female"),
     MALE("male"),
-    EVERY("every");
+    ANY("any");
 
     private final String code;
 
     public static List<BoardRecruitGenderType> forDisplay() {
-        return List.of(FEMALE, MALE, EVERY);
+        return List.of(FEMALE, MALE, ANY);
     }
 
     @jakarta.persistence.Converter(autoApply = true)

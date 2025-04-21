@@ -9,7 +9,7 @@ public record BoardSaveCommand(String title,
                                String content,
                                BoardRecruitGenderType boardRecruitGenderType,
                                Integer boardRecruitPersonnel,
-                               String recruitAge,
+                               BoardRecruitAgeType recruitAge,
                                String recruitAddress,
                                LocalDateTime recruitLocalDateTime
 ) {

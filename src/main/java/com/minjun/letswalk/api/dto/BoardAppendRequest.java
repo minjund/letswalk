@@ -1,8 +1,10 @@
 package com.minjun.letswalk.api.dto;
 
+import com.minjun.letswalk.domain.board.BoardRecruitAgeType;
 import com.minjun.letswalk.domain.board.BoardRecruitGenderType;
 import com.minjun.letswalk.domain.board.BoardSaveCommand;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.Builder;
 
@@ -22,7 +24,7 @@ public record BoardAppendRequest(
         String recruitAge,
         @NotBlank(message = "모집 주소는 필수 입니다.")
         String recruitAddress,
-        @NotBlank(message = "모집 시간은 필수 입니다.")
+        @NotNull
         LocalDateTime recruitLocalDateTime
 ) {
 
@@ -32,7 +34,7 @@ public record BoardAppendRequest(
                 content,
                 BoardRecruitGenderType.findByCode(recruitGenderType),
                 recruitPersonnel,
-                recruitAge,
+                BoardRecruitAgeType.findByCode(recruitAge),
                 recruitAddress,
                 recruitLocalDateTime
         );
