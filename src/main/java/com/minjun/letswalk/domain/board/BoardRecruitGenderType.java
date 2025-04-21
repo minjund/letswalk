@@ -29,7 +29,7 @@ public enum BoardRecruitGenderType implements CodedEnum<String> {
 
     public static BoardRecruitGenderType findByCode(String code){
         for(BoardRecruitGenderType value : values()){
-            if(value.getCode().equals(code)){
+            if(value.getCode().equalsIgnoreCase(code)){
                 return value;
             }
         }

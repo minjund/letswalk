@@ -19,7 +19,7 @@ public enum BoardRecruitAgeType implements CodedEnum<String> {
 
     public static BoardRecruitAgeType findByCode(String code) {
         for(BoardRecruitAgeType value : values()){
-            if(value.getCode().equals(code)){
+            if(value.getCode().equalsIgnoreCase(code)){
                 return value;
             }
         }
