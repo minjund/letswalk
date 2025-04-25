@@ -1,7 +1,7 @@
 package com.minjun.letswalk.domain.board;
 
-import com.minjun.letswalk.infra.dao.BoardFindJpaRepository;
-import com.minjun.letswalk.infra.dao.BoardJpaRepository;
+import com.minjun.letswalk.infra.repository.BoardQueryRepository;
+import com.minjun.letswalk.infra.repository.BoardJpaRepository;
 import jakarta.transaction.Transactional;
 import org.assertj.core.groups.Tuple;
 import org.junit.jupiter.api.AfterEach;
@@ -23,12 +23,11 @@ class BoardQueryDaoTest {
     private BoardJpaRepository boardJpaRepository;
 
     @Autowired
-    private BoardFindJpaRepository boardFindJpaRepository;
+    private BoardQueryRepository boardFindJpaRepository;
 
     @AfterEach
     void tearDown() {
         boardJpaRepository.deleteAllInBatch();
-        boardFindJpaRepository.deleteAllInBatch();
     }
 
     @DisplayName("원하는 상태를 가진 게시판을 조회한다.")
@@ -67,7 +66,7 @@ class BoardQueryDaoTest {
         boardJpaRepository.saveAll(List.of(boardEntity,boardEntity2,boardEntity3));
 
         // when
-        List<BoardEntity> allByRecruitGenderTypeIn = boardFindJpaRepository.findAllByRecruitGenderTypeIn(List.of(BoardRecruitGenderType.FEMALE));
+        List<BoardEntity> allByRecruitGenderTypeIn = boardFindJpaRepository.findBoardsByGenderTypes(List.of(BoardRecruitGenderType.FEMALE));
 
         // then
         assertThat(allByRecruitGenderTypeIn)

@@ -1,4 +1,4 @@
-package com.minjun.letswalk.infra.dao;
+package com.minjun.letswalk.infra.repository;
 
 import com.minjun.letswalk.domain.board.BoardEntity;
 import com.minjun.letswalk.domain.board.BoardDao;

@@ -2,8 +2,7 @@ package com.minjun.letswalk.service.board.query;
 
 import com.minjun.letswalk.api.dto.BoardQueryResponse;
 import com.minjun.letswalk.domain.board.*;
-import com.minjun.letswalk.infra.dao.BoardFindJpaRepository;
-import com.minjun.letswalk.infra.dao.BoardJpaRepository;
+import com.minjun.letswalk.infra.repository.BoardJpaRepository;
 import jakarta.transaction.Transactional;
 import org.assertj.core.groups.Tuple;
 import org.junit.jupiter.api.DisplayName;
@@ -22,9 +21,6 @@ class BoardSearchServiceTest {
 
     @Autowired
     private BoardSearchService boardSearchService;
-
-    @Autowired
-    BoardFindJpaRepository boardFindJpaRepository;
 
     @Autowired
     BoardJpaRepository boardJpaRepository;

@@ -1,7 +1,7 @@
 package com.minjun.letswalk.service.board;
 
 import com.minjun.letswalk.api.dto.BoardAppendRequest;
-import com.minjun.letswalk.infra.dao.BoardJpaRepository;
+import com.minjun.letswalk.infra.repository.BoardJpaRepository;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

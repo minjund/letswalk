@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -19,7 +18,7 @@ public class BoardSearchService {
     private final BoardQueryDao boardQueryDao;
 
     public List<BoardQueryResponse> findAllRecruitGenderTypeByBoard() {
-        List<BoardEntity> boardEntityList = boardQueryDao.findAllByRecruitGenderTypeIn(BoardRecruitGenderType.forDisplay());
+        List<BoardEntity> boardEntityList = boardQueryDao.findBoardsByGenderTypes(BoardRecruitGenderType.forDisplay());
 
         return boardEntityList.stream()
                 .map(BoardQueryResponse::of)

@@ -1,7 +1,6 @@
-package com.minjun.letswalk.infra.dao;
+package com.minjun.letswalk.infra.repository;
 
 import com.minjun.letswalk.domain.board.*;
-import jakarta.transaction.Transactional;
 import org.assertj.core.groups.Tuple;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,11 +13,10 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-@Transactional
-class BoardFindJpaRepositoryTest {
+class BoardQueryRepositoryTest {
 
     @Autowired
-    BoardFindJpaRepository boardFindJpaRepository;
+    BoardQueryRepository boardFindJpaRepository;
 
     @Autowired
     BoardJpaRepository boardJpaRepository;
@@ -66,7 +64,7 @@ class BoardFindJpaRepositoryTest {
         );
 
         // when
-        List<BoardEntity> boardEntityList = boardFindJpaRepository.findAllByRecruitGenderTypeIn(boardRecruitGenderTypeList);
+        List<BoardEntity> boardEntityList = boardFindJpaRepository.findBoardsByGenderTypes(boardRecruitGenderTypeList);
 
         // then
         assertThat(boardEntityList).hasSize(2)
@@ -129,10 +127,9 @@ class BoardFindJpaRepositoryTest {
         );
 
         // when
-        List<BoardEntity> boardEntityList = boardFindJpaRepository.findAllByRecruitGenderTypeIn(boardRecruitGenderTypeList);
+        List<BoardEntity> boardEntityList = boardFindJpaRepository.findBoardsByGenderTypes(boardRecruitGenderTypeList);
 
         // then
         assertThat(boardEntityList).isEmpty();
     }
-
 }
