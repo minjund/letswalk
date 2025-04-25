@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 public class BoardAppender {
     private final BoardDao boardDao;
 
-    public Long append(BoardEntity boardEntity){
+    public String append(BoardEntity boardEntity){
         BoardEntity save = boardDao.save(boardEntity);
-        return save.getSeq();
+        return save.getId();
     }
 }

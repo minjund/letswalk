@@ -19,16 +19,23 @@ public class BoardController {
     private final BoardService boardService;
     private final BoardSearchService boardSearchService;
 
+    @GetMapping("/v1/board")
+    public ApiResponse<List<BoardQueryResponse>> findBoard(){
+        List<BoardQueryResponse> boardQueryResponses = boardSearchService.findAllRecruitGenderTypeByBoard();
+
+        return ApiResponse.ok(boardQueryResponses);
+    }
+
     @GetMapping("/v1/board/{seq}")
-    public ApiResponse<List<BoardQueryResponse>> findBoard(@PathVariable Integer seq){
+    public ApiResponse<List<BoardQueryResponse>> findDetailBoard(@PathVariable String seq){
         List<BoardQueryResponse> boardQueryResponses = boardSearchService.findAllRecruitGenderTypeByBoard();
 
         return ApiResponse.ok(boardQueryResponses);
     }
 
     @PostMapping("/v1/board")
-    public ApiResponse<Long> saveBoard(@Valid @RequestBody BoardAppendRequest boardAppendRequest){
-        Long boardSaveSeq = boardService.boardSave(boardAppendRequest.toCommand());
+    public ApiResponse<String> saveBoard(@Valid @RequestBody BoardAppendRequest boardAppendRequest){
+        String boardSaveSeq = boardService.boardSave(boardAppendRequest.toCommand());
 
         return ApiResponse.ok(boardSaveSeq);
     }

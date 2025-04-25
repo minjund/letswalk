@@ -1,5 +1,6 @@
 package com.minjun.letswalk.domain.board;
 
+import ch.qos.logback.core.util.StringUtil;
 import com.minjun.letswalk.global.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -7,6 +8,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.Comment;
+import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
 
@@ -51,7 +53,6 @@ public class BoardEntity extends BaseEntity {
 
     @Builder
     private BoardEntity(
-            String id,
             String title,
             String content,
             BoardRecruitGenderType recruitGenderType,
@@ -60,7 +61,6 @@ public class BoardEntity extends BaseEntity {
             String recruitAddress,
             LocalDateTime recruitDateTime
     ) {
-        this.id = id;
         this.title = title;
         this.content = content;
         this.recruitGenderType = recruitGenderType;
@@ -70,13 +70,14 @@ public class BoardEntity extends BaseEntity {
         this.recruitAddress = recruitAddress;
     }
 
-    public static BoardEntity of(BoardTitle boardTitle,
-                                 BoardContent boardContent,
-                                 BoardRecruitGenderType boardRecruitGenderType,
-                                 Integer boardRecruitPersonnel,
-                                 BoardRecruitAgeType boardRecruitAgeType,
-                                 String recruitAddress,
-                                 LocalDateTime recruitDateTime
+    public static BoardEntity of(
+            BoardTitle boardTitle,
+            BoardContent boardContent,
+            BoardRecruitGenderType boardRecruitGenderType,
+            Integer boardRecruitPersonnel,
+            BoardRecruitAgeType boardRecruitAgeType,
+            String recruitAddress,
+            LocalDateTime recruitDateTime
     ) {
         return BoardEntity.builder()
                 .title(boardTitle.value())
@@ -88,4 +89,10 @@ public class BoardEntity extends BaseEntity {
                 .recruitDateTime(recruitDateTime)
                 .build();
     }
+
+    @PostPersist
+    public void generateId() {
+        id = String.valueOf(seq);
+    }
+
 }

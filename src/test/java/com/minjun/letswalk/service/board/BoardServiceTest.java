@@ -38,7 +38,7 @@ class BoardServiceTest {
         );
 
         // when
-        Long saveSeq = boardService.boardSave(boardAppendRequest.toCommand());
+        String saveSeq = boardService.boardSave(boardAppendRequest.toCommand());
 
         // then
         assertThat(saveSeq).isNotNull();
