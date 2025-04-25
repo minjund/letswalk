@@ -37,8 +37,37 @@ dependencies {
     //mysql
     runtimeOnly 'com.mysql:mysql-connector-j'
 
+    //querydsl
+    implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
+    annotationProcessor 'com.querydsl:querydsl-apt:5.0.0:jakarta'
+    annotationProcessor 'jakarta.annotation:jakarta.annotation-api'
+    annotationProcessor 'jakarta.persistence:jakarta.persistence-api'
+
     //test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+
+// Define a property for the querydsl generated sources directory
+def querydslGeneratedDir = "$buildDir/generated/querydsl"
+
+// Create a source set for the querydsl Q classes
+sourceSets {
+    main {
+        java {
+            srcDirs += [querydslGeneratedDir]
+        }
+    }
+}
+
+// Configure the java compiler to process annotations
+tasks.withType(JavaCompile) {
+    options.annotationProcessorGeneratedSourcesDirectory = file(querydslGeneratedDir)
+}
+
+// Clean querydsl generated sources directory
+clean {
+    delete file(querydslGeneratedDir)
 }
 
 tasks.named('test') {
